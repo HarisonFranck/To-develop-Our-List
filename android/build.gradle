@@ -1,0 +1,31 @@
+buildscript {
+    ext.kotlin_version = '1.7.10' // Assurez-vous que cette version est compatible avec vos dépendances
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.1' // Version de Gradle
+        classpath 'com.google.gms:google-services:4.3.14' // Dépendance pour Firebase
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Plugin Kotlin, si nécessaire
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
