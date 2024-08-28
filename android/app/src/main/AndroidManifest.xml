@@ -2,7 +2,7 @@
     <application
     android:requestLegacyExternalStorage="true"
 
-        android:label="todevelopourlist"
+        android:label="To-Develop-Our-List"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         
